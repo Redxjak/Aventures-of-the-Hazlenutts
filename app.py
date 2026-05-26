@@ -629,7 +629,7 @@ MILLIE_STORY = {
         "title": "The Jam Jar Giggle",
         "image": "bell",
         "text": (
-            "Millie tapped the jar with her tail. Tink, tink, squeak! A tiny giggle bubbled up through the jam.\n\n"
+            "Millie tapped the jar with her tail. Tink, tink, hop! A tiny giggle bubbled up through the jam.\n\n"
             "Daddy Monkey made his silliest face in the shiny lid. Mama Bear hummed a soft song. "
             "The giggle grew warm and bright enough to carry."
         ),
