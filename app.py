@@ -16,7 +16,10 @@ STORY = {
             "Callum had a backpack full of snacks. Ledger had a map that was mostly drawn in crayon.\n\n"
             "Mama Bear, their mom, peeked in and said, \"Adventurers need kind hearts.\" "
             "Daddy Monkey, their dad, swung a banana-shaped flashlight onto the hook and said, "
-            "\"And a very silly plan.\""
+            "\"And a very silly plan.\"\n\n"
+            "Grandma GiGi and Papa Troy, Mama Bear's parents, waved from the cozy chair. "
+            "Grandma Mimi and Papa Dave, Daddy Monkey's parents, promised to save the best "
+            "story-listening spots for later."
         ),
         "choices": [
             ("Follow the snack crumbs", "crumb_trail"),
@@ -193,6 +196,9 @@ STORY = {
         "text": (
             "In the garden, the flowers drooped sadly. Mama Bear waited by the gate with a cozy picnic blanket. "
             "Daddy Monkey hung paper lanterns from a low branch and made his eyebrows dance.\n\n"
+            "Grandma GiGi carried extra napkins for Mama Bear's side of the family, while Papa Troy "
+            "guarded the snack basket. Grandma Mimi sprinkled encouragement like confetti, and Papa Dave "
+            "checked the path for puddles from Daddy Monkey's side.\n\n"
             "Melody gave her bell a tiny jingle. "
             "Callum made his silliest cereal-nose face. Ledger read a joke from the map: "
             "\"Why did the cat sit on the computer? To keep an eye on the mouse!\"\n\n"
@@ -229,7 +235,9 @@ STORY = {
         "text": (
             "The adventurers held a picnic on a blanket. Mama Bear poured tiny cups of juice, "
             "and Daddy Monkey balanced crackers like a tower. Melody got the sunniest spot. "
-            "Callum counted crackers. Ledger gave a tiny speech about teamwork, bravery, and excellent toast shapes."
+            "Callum counted crackers. Ledger gave a tiny speech about teamwork, bravery, and excellent toast shapes.\n\n"
+            "Grandma GiGi and Papa Troy cheered from Mama Bear's side of the blanket, while Grandma Mimi "
+            "and Papa Dave cheered from Daddy Monkey's side. No blanket corner escaped."
         ),
         "choices": [("Choose another hero", "character_select"), ("Play Melody's story again", "start")],
     },
@@ -265,6 +273,9 @@ CALLUM_STORY = {
             "Callum the dog woke up with one very important thought: someone had to protect the snacks. "
             "Mama Bear, his mom, pinned on his pretend patrol badge and reminded him that sharing counts as protecting. "
             "Daddy Monkey, his dad, made a trumpet sound into a paper towel tube.\n\n"
+            "Grandma GiGi, Mama Bear's mom, called him Captain Crunchies. Papa Troy, Mama Bear's dad, "
+            "nodded proudly. Grandma Mimi, Daddy Monkey's mom, called him Captain Kindness, and Papa Dave, "
+            "Daddy Monkey's dad, agreed both titles were excellent.\n\n"
             "Melody the cat stretched in a sunbeam. Ledger the dinosaur held up a crayon map. "
             "\"The Missing Crunchies are this way,\" Ledger announced."
         ),
@@ -359,6 +370,7 @@ CALLUM_STORY = {
         "text": (
             "Callum shared every rescued snack. Melody got the sunniest spot, Ledger got the biggest cracker, "
             "Mama Bear got the first thank-you, and Daddy Monkey got crumbs in his eyebrows. "
+            "Grandma GiGi and Papa Troy sat near Mama Bear, while Grandma Mimi and Papa Dave sat near Daddy Monkey. "
             "Callum got a hero hug.\n\n"
             "The Snack Patrol was officially the coziest team in the house."
         ),
@@ -370,6 +382,7 @@ CALLUM_STORY = {
         "text": (
             "Callum led the parade with proud paws and a wagging tail. Melody jingled a bell. "
             "Mama Bear waved a dish towel like a royal flag, and Daddy Monkey marched backward just to be funny. "
+            "Grandma GiGi and Papa Troy clapped beside Mama Bear, while Grandma Mimi and Papa Dave clapped beside Daddy Monkey. "
             "Ledger waved the map upside down, which somehow made it more exciting."
         ),
         "choices": [("Choose another hero", "character_select"), ("Play Callum's story again", "start")],
@@ -385,6 +398,8 @@ LEDGER_STORY = {
             "Ledger the dinosaur woke up ready for science. Mama Bear, his mom, packed his green crayon and whispered, "
             "\"Careful explorers notice small wonders.\" Daddy Monkey, his dad, tucked a banana sticker onto the map "
             "and whispered, \"Silly explorers notice big laughs.\"\n\n"
+            "Grandma GiGi and Papa Troy, Mama Bear's parents, lent him a tiny notebook for careful discoveries. "
+            "Grandma Mimi and Papa Dave, Daddy Monkey's parents, lent him a shiny button for measuring bravery.\n\n"
             "Ledger unrolled his map and made his bravest tiny roar.\n\n"
             "Melody the cat blinked from her sunbeam. Callum the dog sniffed the map and found a cracker crumb."
         ),
@@ -477,6 +492,8 @@ LEDGER_STORY = {
         "text": (
             "The Giggle Garden was quiet. Mama Bear knelt beside the droopy flowers and gave them a kind smile. "
             "Daddy Monkey dangled from the lowest branch and made the gentlest monkey face.\n\n"
+            "Grandma GiGi and Papa Troy hummed softly by Mama Bear. Grandma Mimi and Papa Dave held the map open "
+            "beside Daddy Monkey so the breeze could not fold the important parts.\n\n"
             "Ledger stepped forward and told the flowers his best dinosaur joke: "
             "\"What do tiny dinosaurs put on toast? Jurassi-jam!\"\n\n"
             "The flowers giggled so much their petals wobbled. Melody clapped her paws. Callum wagged in circles."
@@ -491,7 +508,8 @@ LEDGER_STORY = {
         "image": "map",
         "text": (
             "Ledger drew the whole adventure on his map: the cave, the pantry volcano, the garden, "
-            "Mama Bear's picnic blanket, Daddy Monkey's lanterns, and three heroic friends. "
+            "Mama Bear's picnic blanket, Daddy Monkey's lanterns, Grandma GiGi's notebook, Papa Troy's snack watch, "
+            "Grandma Mimi's button, Papa Dave's puddle check, and three heroic friends. "
             "He put a giant star beside his name, then added stars for everyone else too."
         ),
         "choices": [("Choose another hero", "character_select"), ("Play Ledger's story again", "start")],
@@ -518,7 +536,9 @@ MILLIE_STORY = {
             "and a very important squeak. She was Melody, Callum, and Ledger's cousin, and she knew "
             "small heroes could find clues that big paws missed.\n\n"
             "Mama Bear set a tiny teacup on the table and said, \"Welcome, Millie.\" Daddy Monkey "
-            "balanced a crumb on his nose and whispered, \"The house has been waiting for a mouse-sized mystery.\""
+            "balanced a crumb on his nose and whispered, \"The house has been waiting for a mouse-sized mystery.\"\n\n"
+            "Auntie Croc, Millie's mom, gave her a careful crocodile smile. Uncle Zebra, Millie's dad, "
+            "straightened her ribbon stripes and said, \"Cousin adventures are best when you squeak bravely.\""
         ),
         "choices": [
             ("Inspect the teacup", "teacup_clue"),
@@ -559,7 +579,9 @@ MILLIE_STORY = {
             "Mama Bear crouched beside Millie and said, \"Tiny paws are perfect for gentle jobs.\" "
             "She tied Millie's blue ribbon into a neat adventure bow.\n\n"
             "Daddy Monkey handed Millie a raisin and called it emergency treasure. Millie accepted, "
-            "because every explorer needs supplies."
+            "because every explorer needs supplies.\n\n"
+            "Grandma GiGi and Papa Troy sent a pocket-sized hug from Mama Bear's side of the family. "
+            "Grandma Mimi and Papa Dave checked that the adventure bow was tied just right for Daddy Monkey's side."
         ),
         "choices": [
             ("Follow the note to the pantry", "pantry_path"),
@@ -585,7 +607,9 @@ MILLIE_STORY = {
         "text": (
             "Millie nudged the lost button out from under the sofa. It rolled across the floor and stopped "
             "beside Daddy Monkey's foot.\n\n"
-            "\"A moon for the map!\" Daddy Monkey cheered. Mama Bear smiled and gave Millie a proud little nod."
+            "\"A moon for the map!\" Daddy Monkey cheered. Mama Bear smiled and gave Millie a proud little nod.\n\n"
+            "Auntie Croc clicked her teeth softly, which was crocodile applause. Uncle Zebra tapped one striped hoof "
+            "in a tiny victory rhythm."
         ),
         "choices": [
             ("Add the moon button to the map", "map_ending"),
@@ -637,7 +661,9 @@ MILLIE_STORY = {
         "text": (
             "In the Giggle Garden, Millie opened the jam jar and released one tiny giggle. It bounced from "
             "flower to flower until the whole garden shimmered.\n\n"
-            "Melody purred, Callum wagged, and Ledger added Millie's cousin-sized victory to the map."
+            "Melody purred, Callum wagged, and Ledger added Millie's cousin-sized victory to the map.\n\n"
+            "Auntie Croc dabbed her happy eyes with a napkin. Uncle Zebra announced, \"That is our Millie, "
+            "small enough for crumbs and brave enough for gardens.\""
         ),
         "choices": [
             ("Lead a mouse parade", "parade_ending"),
@@ -650,6 +676,8 @@ MILLIE_STORY = {
         "text": (
             "Millie shared the raisin treasure, the jam jar giggle, and three heroic crumbs. "
             "Mama Bear poured juice into the tiniest cup, and Daddy Monkey made a napkin tent just for her.\n\n"
+            "Grandma GiGi and Papa Troy sat with Mama Bear, Grandma Mimi and Papa Dave sat with Daddy Monkey, "
+            "and Auntie Croc and Uncle Zebra found cozy spots nearby. "
             "Millie decided cousin day was best when everyone had room at the blanket."
         ),
         "choices": [("Choose another hero", "character_select"), ("Play Millie's story again", "start")],
@@ -660,7 +688,8 @@ MILLIE_STORY = {
         "text": (
             "Millie drew her path with a crumb, a button moon, a teacup, and one bright giggle. "
             "Ledger added labels, Melody added a heart, and Callum added a snack corner.\n\n"
-            "Mama Bear called it brave. Daddy Monkey called it tiny-but-mighty."
+            "Mama Bear called it brave. Daddy Monkey called it tiny-but-mighty. Auntie Croc and Uncle Zebra "
+            "asked for a copy to hang on the cousin wall."
         ),
         "choices": [("Choose another hero", "character_select"), ("Play Millie's story again", "start")],
     },
@@ -670,6 +699,8 @@ MILLIE_STORY = {
         "text": (
             "Millie led a parade around the table leg, across the blanket, and past the pantry door. "
             "Her tail held the blue ribbon like a flag.\n\n"
+            "Grandma GiGi and Papa Troy cheered with Mama Bear, Grandma Mimi and Papa Dave cheered with Daddy Monkey, "
+            "and Auntie Croc and Uncle Zebra cheered from the front row. "
             "The Hazlenutts cheered for their cousin, and Millie took the smallest, proudest bow."
         ),
         "choices": [("Choose another hero", "character_select"), ("Play Millie's story again", "start")],
@@ -757,7 +788,7 @@ class MelodyGame:
 
         self.subtitle = tk.Label(
             self.main,
-            text="A gentle read-along adventure with Melody, Callum, Ledger, Millie, Mama Bear, and Daddy Monkey",
+            text="A gentle read-along adventure with the Hazlenutts family",
             font=("Segoe UI", 11),
             bg="#fffaf0",
             fg="#6b5a45",
@@ -841,7 +872,7 @@ class MelodyGame:
         self.story_text.config(
             text=(
                 "Pick who should lead this adventure. Each hero has their own story arc, "
-                "with Melody, Callum, Ledger, Millie, Mama Bear, and Daddy Monkey still helping each other along the way."
+                "with the Hazlenutts family still helping each other along the way."
             )
         )
 

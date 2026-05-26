@@ -1,6 +1,6 @@
 # Aventures of the Hazlenutts
 
-A kid-friendly, mostly text-based Python adventure game starring Melody the cat, Callum the dog, Ledger the dinosaur, Millie the mouse cousin, Mama Bear, and Daddy Monkey.
+A kid-friendly, mostly text-based Python adventure game starring Melody the cat, Callum the dog, Ledger the dinosaur, Millie the mouse cousin, and the wider Hazlenutts family.
 
 ## How to Play
 
@@ -24,6 +24,9 @@ Choose Melody, Callum, Ledger, or Millie as the hero. Then read each scene toget
 - Millie as their curious mouse cousin
 - Mama Bear as the kids' caring mom
 - Daddy Monkey as their silly dad
+- Grandma GiGi and Papa Troy as Mama Bear's parents
+- Grandma Mimi and Papa Dave as Daddy Monkey's parents
+- Auntie Croc and Uncle Zebra as Millie's parents
 - Built-in character illustrations drawn directly in the Python GUI
 - No internet connection or extra packages required
 
