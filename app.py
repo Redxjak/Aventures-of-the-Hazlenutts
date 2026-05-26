@@ -1044,7 +1044,13 @@ class MelodyGame:
         self.current_character = None
         self.current_scene = "character_select"
         self.history = []
+        self.canvas.pack_forget()
+        self.story_panel.pack_configure(expand=True)
         self.scene_title.config(text="Choose Your Hero")
+        self.scene_title.config(justify="center")
+        self.scene_title.pack_configure(anchor="center")
+        self.story_text.config(justify="center", width=520)
+        self.story_text.pack_configure(anchor="center")
         self.story_text.config(
             text=(
                 "Pick who should lead this adventure. Each hero has their own story arc, "
@@ -1056,9 +1062,12 @@ class MelodyGame:
             child.destroy()
 
         for character_id, info in CHARACTERS.items():
+            sprite = self.sprite_images.get(character_id, {}).get("medium")
             button = tk.Button(
                 self.choices_frame,
                 text=info["button"],
+                image=sprite,
+                compound="right",
                 font=self.button_font,
                 command=lambda hero=character_id: self.start_story(hero),
                 bg="#88d498",
@@ -1066,9 +1075,10 @@ class MelodyGame:
                 activebackground="#6cc57e",
                 relief="flat",
                 padx=14,
-                pady=10,
+                pady=8,
                 wraplength=360,
                 justify="left",
+                height=78,
             )
             button.pack(fill="x", pady=5)
 
@@ -1084,6 +1094,15 @@ class MelodyGame:
         if scene_id == "character_select":
             self.show_character_select()
             return
+
+        if not self.canvas.winfo_ismapped():
+            self.story_panel.pack_forget()
+            self.canvas.pack(side="left", fill="both", expand=False, padx=(0, 18))
+            self.story_panel.pack(side="left", fill="both", expand=True)
+            self.scene_title.config(justify="left")
+            self.scene_title.pack_configure(anchor="w")
+            self.story_text.config(justify="left", width=430)
+            self.story_text.pack_configure(anchor="w")
 
         if remember:
             self.history.append(self.current_scene)
