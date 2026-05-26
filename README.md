@@ -1,4 +1,4 @@
-# Aventures of the Hazlenutts
+# Adventures of the Hazlenutts
 
 A kid-friendly, mostly text-based Python adventure game starring Melody the cat, Callum the dog, Ledger the dinosaur, Millie the bunny cousin, and the wider Hazlenutts family.
 

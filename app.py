@@ -2,7 +2,7 @@ import tkinter as tk
 from tkinter import font
 
 
-APP_TITLE = "Aventures of the Hazlenutts"
+APP_TITLE = "Adventures of the Hazlenutts"
 
 
 STORY = {
