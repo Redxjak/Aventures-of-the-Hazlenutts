@@ -2,7 +2,7 @@ import tkinter as tk
 from tkinter import font
 
 
-APP_TITLE = "Adventures of the Hazlenutts"
+APP_TITLE = "Fun Family Adventures"
 
 
 STORY = {
@@ -191,8 +191,8 @@ STORY = {
         "title": "The Giggle Garden",
         "image": "garden",
         "text": (
-            "In the garden behind Grandma GiGi and Papa Troy's house, the flowers drooped sadly. "
-            "Grandma GiGi carried extra napkins, and Papa Troy guarded the snack basket like it was royal treasure.\n\n"
+            "In the garden behind Gigi and Papa Gecko's house, the flowers drooped sadly. "
+            "Gigi carried extra napkins, and Papa Gecko guarded the snack basket like it was royal treasure.\n\n"
             "Melody gave her bell a tiny jingle. "
             "Callum made his silliest cereal-nose face. Ledger read a joke from the map: "
             "\"Why did the cat sit on the computer? To keep an eye on the mouse!\"\n\n"
@@ -227,8 +227,8 @@ STORY = {
         "title": "The Snack Picnic",
         "image": "picnic",
         "text": (
-            "The adventurers held a picnic on Grandma GiGi and Papa Troy's blanket. Grandma GiGi poured tiny cups "
-            "of juice, and Papa Troy balanced crackers like a tower. Melody got the sunniest spot.\n\n"
+            "The adventurers held a picnic on Gigi and Papa Gecko's blanket. Gigi poured tiny cups "
+            "of juice, and Papa Gecko balanced crackers like a tower. Melody got the sunniest spot.\n\n"
             "Callum counted crackers. Ledger gave a tiny speech about teamwork, bravery, and excellent toast shapes."
         ),
         "choices": [("Choose another hero", "character_select"), ("Play Melody's story again", "start")],
@@ -358,7 +358,7 @@ CALLUM_STORY = {
         "image": "picnic",
         "text": (
             "Callum shared every rescued snack. Melody got the sunniest spot, Ledger got the biggest cracker, "
-            "Grandma GiGi got the first thank-you, and Papa Troy got crumbs in his eyebrows. "
+            "Gigi got the first thank-you, and Papa Gecko got crumbs in his eyebrows. "
             "Callum got a hero hug.\n\n"
             "The Snack Patrol was officially the coziest team in the house."
         ),
@@ -369,7 +369,7 @@ CALLUM_STORY = {
         "image": "parade",
         "text": (
             "Callum led the parade with proud paws and a wagging tail. Melody jingled a bell. "
-            "Grandma GiGi waved a dish towel like a royal flag, and Papa Troy marched backward just to be funny. "
+            "Gigi waved a dish towel like a royal flag, and Papa Gecko marched backward just to be funny. "
             "Ledger waved the map upside down, which somehow made it more exciting."
         ),
         "choices": [("Choose another hero", "character_select"), ("Play Callum's story again", "start")],
@@ -475,8 +475,8 @@ LEDGER_STORY = {
         "title": "Ledger Saves the Giggles",
         "image": "garden",
         "text": (
-            "The Giggle Garden at Grandma GiGi and Papa Troy's house was quiet. Grandma GiGi hummed softly "
-            "beside the droopy flowers, and Papa Troy held Ledger's map open so the breeze could not fold "
+            "The Giggle Garden at Gigi and Papa Gecko's house was quiet. Gigi hummed softly "
+            "beside the droopy flowers, and Papa Gecko held Ledger's map open so the breeze could not fold "
             "the important parts.\n\n"
             "Ledger stepped forward and told the flowers his best dinosaur joke: "
             "\"What do tiny dinosaurs put on toast? Jurassi-jam!\"\n\n"
@@ -492,7 +492,7 @@ LEDGER_STORY = {
         "image": "map",
         "text": (
             "Ledger drew the whole adventure on his map: the cave, the pantry volcano, the garden, "
-            "Grandma GiGi's humming flowers, Papa Troy's snack watch, and three heroic friends. "
+            "Gigi's humming flowers, Papa Gecko's snack watch, and three heroic friends. "
             "He put a giant star beside his name, then added stars for everyone else too."
         ),
         "choices": [("Choose another hero", "character_select"), ("Play Ledger's story again", "start")],
@@ -689,12 +689,168 @@ MILLIE_STORY = {
 }
 
 
+COUSIN_HEROES = {
+    "lily": {
+        "name": "Lily",
+        "full_name": "Lily the Beaver",
+        "animal": "beaver",
+        "gift": "building stick bridges",
+        "tool": "a bundle of smooth sticks",
+        "sound": "tap-tap-build",
+        "color": "#8b5e34",
+    },
+    "mason": {
+        "name": "Mason",
+        "full_name": "Mason the Dragon",
+        "animal": "dragon",
+        "gift": "warming lanterns with gentle dragon breath",
+        "tool": "a tiny lantern",
+        "sound": "whoosh-glow",
+        "color": "#b84a62",
+    },
+    "oliver": {
+        "name": "Oliver",
+        "full_name": "Oliver the Husky",
+        "animal": "husky",
+        "gift": "pulling sleds and sniffing snowy clues",
+        "tool": "a blue scarf",
+        "sound": "ruff-rush",
+        "color": "#8da9c4",
+    },
+    "gemma": {
+        "name": "Gemma",
+        "full_name": "Gemma the Hedgehog",
+        "animal": "hedgehog",
+        "gift": "finding tiny clues in cozy corners",
+        "tool": "a leaf notebook",
+        "sound": "sniff-snuffle",
+        "color": "#9b7e5c",
+    },
+    "nora": {
+        "name": "Nora",
+        "full_name": "Nora the Kangaroo",
+        "animal": "kangaroo",
+        "gift": "carrying helpful supplies in her pocket",
+        "tool": "a pocket full of buttons",
+        "sound": "hop-hop-hooray",
+        "color": "#c9865b",
+    },
+}
+
+
+def make_cousin_story(hero):
+    name = hero["name"]
+    full_name = hero["full_name"]
+    return {
+        "start": {
+            "title": f"{name}'s Cousin Club Day",
+            "image": "garden",
+            "text": (
+                f"{full_name} arrived for Cousin Club Day carrying {hero['tool']}. "
+                "Aunt Chicken packed a snack pouch, Uncle Panther gave a quiet proud nod, "
+                "and the cousins gathered near the family tree.\n\n"
+                f"{name} was especially good at {hero['gift']}. Today, that might be exactly what the family needed."
+            ),
+            "choices": [
+                ("Check the family tree map", "family_tree_map"),
+                ("Follow the giggle trail", "giggle_trail"),
+            ],
+        },
+        "family_tree_map": {
+            "title": "The Wiggly Family Map",
+            "image": "map",
+            "text": (
+                "Gigi and Papa Gecko had drawn a big family map, but one ribbon path had wiggled loose. "
+                "Melody held one corner, Ledger read the labels, and Callum guarded the snack bowl.\n\n"
+                f"{name} studied the map and spotted where the cousin branch should go."
+            ),
+            "choices": [
+                ("Fix the cousin branch", "cousin_branch"),
+                ("Ask Millie to check the tiny labels", "tiny_labels"),
+            ],
+        },
+        "giggle_trail": {
+            "title": "The Giggle Trail",
+            "image": "hallway",
+            "text": (
+                "A tiny giggle bounced down the hallway, around a chair leg, and under the picnic blanket. "
+                f"{name} followed it carefully, using {hero['tool']} to mark the way.\n\n"
+                "Millie hopped beside the trail and whispered, \"Cousin clue detected.\""
+            ),
+            "choices": [
+                ("Track the giggle to the garden", "garden_helper"),
+                ("Build a tiny clue station", "cousin_branch"),
+            ],
+        },
+        "cousin_branch": {
+            "title": "The Cousin Branch",
+            "image": "supplies",
+            "text": (
+                f"{name} used {hero['gift']} to help put every cousin in the right place. "
+                "Lily, Mason, Oliver, Gemma, Nora, Melody, Callum, Ledger, and Millie all got their own spot.\n\n"
+                f"Then {name} made the official family-helper sound: \"{hero['sound']}!\""
+            ),
+            "choices": [
+                ("Bring the fixed branch to the garden", "garden_helper"),
+                ("Celebrate with a cousin parade", "parade_ending"),
+            ],
+        },
+        "tiny_labels": {
+            "title": "Millie's Tiny Labels",
+            "image": "note",
+            "text": (
+                "Millie found the tiniest labels tucked inside a teacup. One said Cousins. One said Aunt Chicken. "
+                "One said Uncle Panther.\n\n"
+                f"{name} placed them carefully while Gemma checked the corners and Mason warmed the glue just enough."
+            ),
+            "choices": [
+                ("Finish the family map", "map_ending"),
+                ("Take the labels to the garden", "garden_helper"),
+            ],
+        },
+        "garden_helper": {
+            "title": f"{name} Helps the Garden",
+            "image": "garden",
+            "text": (
+                "The garden flowers had been waiting for the family names to settle. "
+                f"When {name} brought the fixed cousin branch, every flower leaned closer to listen.\n\n"
+                f"{name} shared {hero['tool']}, and the garden answered with a warm little giggle."
+            ),
+            "choices": [
+                ("Save the family giggle", "map_ending"),
+                ("Lead a cousin parade", "parade_ending"),
+            ],
+        },
+        "map_ending": {
+            "title": f"{name}'s Family Map",
+            "image": "map",
+            "text": (
+                f"{name} helped finish the family map. It showed grandparents, parents, aunts, uncles, "
+                "siblings, and cousins all connected with bright careful lines.\n\n"
+                "Mama Bear called it beautiful. Daddy Monkey called it official. The cousins called it theirs."
+            ),
+            "choices": [("Choose another hero", "character_select"), (f"Play {name}'s story again", "start")],
+        },
+        "parade_ending": {
+            "title": f"{name}'s Cousin Parade",
+            "image": "parade",
+            "text": (
+                f"{name} led a cousin parade past the family tree, around the snack blanket, and through the garden path. "
+                "Everyone had a part: builders, hoppers, sniffers, map-makers, and giggle-carriers.\n\n"
+                "The whole family cheered, because every good adventure has room for one more cousin story."
+            ),
+            "choices": [("Choose another hero", "character_select"), (f"Play {name}'s story again", "start")],
+        },
+    }
+
+
 STORIES = {
     "melody": STORY,
     "callum": CALLUM_STORY,
     "ledger": LEDGER_STORY,
     "millie": MILLIE_STORY,
 }
+STORIES.update({key: make_cousin_story(hero) for key, hero in COUSIN_HEROES.items()})
 
 
 CHARACTERS = {
@@ -719,6 +875,16 @@ CHARACTERS = {
         "button": "Play as Millie the bunny",
     },
 }
+CHARACTERS.update(
+    {
+        key: {
+            "name": hero["name"],
+            "description": hero["full_name"],
+            "button": f"Play as {hero['full_name']}",
+        }
+        for key, hero in COUSIN_HEROES.items()
+    }
+)
 
 
 PALETTES = {
@@ -769,7 +935,7 @@ class MelodyGame:
 
         self.subtitle = tk.Label(
             self.main,
-            text="A gentle read-along adventure with the Hazlenutts family",
+            text="A gentle read-along adventure with the whole family",
             font=("Segoe UI", 11),
             bg="#fffaf0",
             fg="#6b5a45",
@@ -853,7 +1019,7 @@ class MelodyGame:
         self.story_text.config(
             text=(
                 "Pick who should lead this adventure. Each hero has their own story arc, "
-                "with the Hazlenutts family still helping each other along the way."
+                "with the family still helping each other along the way."
             )
         )
 
@@ -937,6 +1103,11 @@ class MelodyGame:
         self.draw_dog(74, 198, scale=0.62, name="Callum")
         self.draw_dino(282, 198, scale=0.62, name="Ledger")
         self.draw_bunny(270, 104, scale=0.58, name="Millie")
+        self.draw_cousin("lily", 62, 90, 0.42)
+        self.draw_cousin("mason", 120, 80, 0.42)
+        self.draw_cousin("oliver", 240, 78, 0.42)
+        self.draw_cousin("gemma", 320, 92, 0.42)
+        self.draw_cousin("nora", 325, 210, 0.42)
 
     def draw_scene(self, image_key):
         self.canvas.delete("all")
@@ -998,8 +1169,15 @@ class MelodyGame:
                 "callum": (282, 198, 0.66),
                 "ledger": (276, 102, 0.58),
             }
+        elif self.current_character in COUSIN_HEROES:
+            positions = {
+                self.current_character: (178, 150, 1.0),
+                "melody": (72, 198, 0.64),
+                "callum": (282, 198, 0.64),
+                "millie": (286, 104, 0.56),
+            }
 
-        for character_id in ["melody", "callum", "ledger", "millie"]:
+        for character_id in positions:
             x, y, scale = positions[character_id]
             self.draw_character(character_id, x, y, scale)
 
@@ -1012,6 +1190,49 @@ class MelodyGame:
             self.draw_dino(x, y, scale=scale, name="Ledger")
         elif character_id == "millie":
             self.draw_bunny(x, y, scale=scale, name="Millie")
+        elif character_id in COUSIN_HEROES:
+            self.draw_cousin(character_id, x, y, scale)
+
+    def draw_cousin(self, character_id, x, y, scale):
+        hero = COUSIN_HEROES[character_id]
+        name = hero["name"]
+        body = hero["color"]
+        outline = "#5c4033"
+        s = scale
+        self.canvas.create_oval(x - 48 * s, y - 4 * s, x + 48 * s, y + 74 * s, fill=body, outline=outline, width=2)
+        self.canvas.create_oval(x - 36 * s, y - 62 * s, x + 36 * s, y + 6 * s, fill=body, outline=outline, width=2)
+
+        if character_id == "lily":
+            self.canvas.create_oval(x - 47 * s, y - 45 * s, x - 25 * s, y - 19 * s, fill=body, outline=outline, width=2)
+            self.canvas.create_oval(x + 25 * s, y - 45 * s, x + 47 * s, y - 19 * s, fill=body, outline=outline, width=2)
+            self.canvas.create_oval(x - 16 * s, y - 30 * s, x + 16 * s, y - 10 * s, fill="#d7b38c", outline=outline)
+            self.canvas.create_arc(x + 36 * s, y + 22 * s, x + 88 * s, y + 72 * s, start=95, extent=225, style="arc", outline="#6f4d2f", width=max(5, int(10 * s)))
+        elif character_id == "mason":
+            self.canvas.create_polygon(x - 34 * s, y - 40 * s, x - 18 * s, y - 86 * s, x - 5 * s, y - 43 * s, fill=body, outline=outline)
+            self.canvas.create_polygon(x + 34 * s, y - 40 * s, x + 18 * s, y - 86 * s, x + 5 * s, y - 43 * s, fill=body, outline=outline)
+            for offset in [-24, 0, 24]:
+                self.canvas.create_polygon(x + offset * s, y - 70 * s, x + (offset + 8) * s, y - 88 * s, x + (offset + 16) * s, y - 70 * s, fill="#f7c948", outline=outline)
+            self.canvas.create_arc(x + 32 * s, y + 12 * s, x + 92 * s, y + 76 * s, start=90, extent=220, style="arc", outline=body, width=max(5, int(10 * s)))
+        elif character_id == "oliver":
+            self.canvas.create_polygon(x - 33 * s, y - 42 * s, x - 20 * s, y - 82 * s, x - 4 * s, y - 44 * s, fill="#f7f7f7", outline=outline)
+            self.canvas.create_polygon(x + 33 * s, y - 42 * s, x + 20 * s, y - 82 * s, x + 4 * s, y - 44 * s, fill="#f7f7f7", outline=outline)
+            self.canvas.create_oval(x - 24 * s, y - 48 * s, x + 24 * s, y - 8 * s, fill="#f7f7f7", outline="")
+            self.canvas.create_line(x - 28 * s, y + 6 * s, x + 28 * s, y + 6 * s, fill="#457b9d", width=max(4, int(7 * s)))
+        elif character_id == "gemma":
+            for offset in [-28, -14, 0, 14, 28]:
+                self.canvas.create_line(x + offset * s, y - 74 * s, x + (offset - 8) * s, y - 55 * s, fill="#3f3428", width=max(1, int(2 * s)))
+            self.canvas.create_oval(x - 20 * s, y - 32 * s, x + 20 * s, y - 12 * s, fill="#f4d1ae", outline=outline)
+        elif character_id == "nora":
+            self.canvas.create_oval(x - 35 * s, y - 94 * s, x - 18 * s, y - 40 * s, fill=body, outline=outline, width=2)
+            self.canvas.create_oval(x + 18 * s, y - 94 * s, x + 35 * s, y - 40 * s, fill=body, outline=outline, width=2)
+            self.canvas.create_oval(x - 20 * s, y + 26 * s, x + 20 * s, y + 62 * s, fill="#f6d7b0", outline=outline)
+            self.canvas.create_line(x + 38 * s, y + 26 * s, x + 78 * s, y + 65 * s, fill=outline, width=max(3, int(5 * s)))
+
+        self.canvas.create_oval(x - 15 * s, y - 36 * s, x - 5 * s, y - 26 * s, fill="#243b53", outline="")
+        self.canvas.create_oval(x + 5 * s, y - 36 * s, x + 15 * s, y - 26 * s, fill="#243b53", outline="")
+        self.canvas.create_oval(x - 4 * s, y - 20 * s, x + 4 * s, y - 12 * s, fill=outline, outline="")
+        self.canvas.create_arc(x - 12 * s, y - 18 * s, x + 12 * s, y - 2 * s, start=200, extent=140, style="arc", outline=outline, width=2)
+        self.canvas.create_text(x, y + 92 * s, text=name, fill="#3f3428", font=("Segoe UI", max(8, int(11 * s)), "bold"))
 
     def draw_cat(self, x, y, scale, body, stripes, name):
         s = scale
