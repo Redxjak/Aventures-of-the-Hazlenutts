@@ -1,6 +1,6 @@
 # Aventures of the Hazlenutts
 
-A kid-friendly, mostly text-based Python adventure game starring Melody the cat, with Callum the dog and Ledger the dinosaur as side characters.
+A kid-friendly, mostly text-based Python adventure game starring Melody the cat, with Callum the dog, Ledger the dinosaur, Mama Bear, and Daddy Monkey.
 
 ## How to Play
 
@@ -21,6 +21,8 @@ Choose Melody, Callum, or Ledger as the hero. Then read each scene together and 
 - Melody as the main cat hero
 - Callum as a friendly German shepherd-style dog
 - Ledger as a tiny T. rex-style dinosaur
+- Mama Bear as the kids' caring mom
+- Daddy Monkey as their silly dad
 - Built-in character illustrations drawn directly in the Python GUI
 - No internet connection or extra packages required
 
