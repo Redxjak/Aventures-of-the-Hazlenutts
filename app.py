@@ -1,5 +1,6 @@
 import tkinter as tk
 from tkinter import font
+from pathlib import Path
 
 
 APP_TITLE = "Fun Family Adventures"
@@ -928,6 +929,7 @@ class MelodyGame:
         self.current_character = None
         self.current_scene = "start"
         self.history = []
+        self.character_select_art = None
 
         self.title_font = font.Font(family="Georgia", size=24, weight="bold")
         self.body_font = font.Font(family="Segoe UI", size=14)
@@ -1022,6 +1024,10 @@ class MelodyGame:
         )
         self.read_aloud_hint.pack(side="right")
 
+        art_path = Path(__file__).with_name("assets") / "character-cards.png"
+        if art_path.exists():
+            self.character_select_art = tk.PhotoImage(file=str(art_path))
+
         self.show_character_select()
 
     def show_character_select(self):
@@ -1108,6 +1114,11 @@ class MelodyGame:
 
     def draw_character_select(self):
         self.canvas.delete("all")
+        if self.character_select_art:
+            self.canvas.create_rectangle(0, 0, 360, 300, fill="#fffaf0", outline="")
+            self.canvas.create_image(180, 150, image=self.character_select_art)
+            return
+
         self.canvas.create_rectangle(0, 0, 360, 300, fill="#fff1a8", outline="")
         self.canvas.create_oval(-70, -70, 150, 112, fill="#ffffff", outline="")
         self.canvas.create_oval(220, 185, 460, 370, fill="#ffffff", outline="")
