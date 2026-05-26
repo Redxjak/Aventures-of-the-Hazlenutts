@@ -515,14 +515,14 @@ MILLIE_STORY = {
         "title": "Millie and the Teacup Trail",
         "image": "kitchen",
         "text": (
-            "Millie the Mouse arrived for cousin day with a thimble-sized backpack, a blue ribbon, "
-            "and a very important squeak. She was Melody, Callum, and Ledger's cousin, and she knew "
+            "Millie the Bunny arrived for cousin day with a thimble-sized backpack, a blue ribbon, "
+            "and a very important hop. She was Melody, Callum, and Ledger's cousin, and she knew "
             "small heroes could find clues that big paws missed.\n\n"
             "Mama Bear set a tiny teacup on the table and said, \"Welcome, Millie.\" Daddy Monkey "
-            "balanced a crumb on his nose and whispered, \"The house has been waiting for a mouse-sized mystery.\"\n\n"
+            "balanced a crumb on his nose and whispered, \"The house has been waiting for a bunny-sized mystery.\"\n\n"
             "Auntie Croc, Millie's mom and Daddy Monkey's sister, gave her a careful crocodile smile. "
             "Uncle Zebra, Millie's dad, straightened her ribbon stripes and said, "
-            "\"Cousin adventures are best when you squeak bravely.\""
+            "\"Cousin adventures are best when you hop bravely.\""
         ),
         "choices": [
             ("Inspect the teacup", "teacup_clue"),
@@ -535,7 +535,7 @@ MILLIE_STORY = {
         "text": (
             "Inside the teacup, Millie found a folded note no bigger than a cracker crumb. It said, "
             "\"The Whispering Crumbs need a brave cousin. Bring kindness and a good listening ear.\"\n\n"
-            "Melody leaned close, Callum held very still, and Ledger wrote, \"Mouse clues are highly official.\""
+            "Melody leaned close, Callum held very still, and Ledger wrote, \"Bunny clues are highly official.\""
         ),
         "choices": [
             ("Listen for whispering crumbs", "crumb_whispers"),
@@ -648,7 +648,7 @@ MILLIE_STORY = {
             "declared the giggle officially saved."
         ),
         "choices": [
-            ("Lead a mouse parade", "parade_ending"),
+            ("Lead a bunny parade", "parade_ending"),
             ("Draw Millie's path on the map", "map_ending"),
         ],
     },
@@ -664,7 +664,7 @@ MILLIE_STORY = {
         "choices": [("Choose another hero", "character_select"), ("Play Millie's story again", "start")],
     },
     "map_ending": {
-        "title": "Millie's Mouse-Sized Map",
+        "title": "Millie's Bunny-Sized Map",
         "image": "map",
         "text": (
             "Millie drew her path with a crumb, a button moon, a teacup, and one bright giggle. "
@@ -675,7 +675,7 @@ MILLIE_STORY = {
         "choices": [("Choose another hero", "character_select"), ("Play Millie's story again", "start")],
     },
     "parade_ending": {
-        "title": "The Tiny Tail Parade",
+        "title": "The Bunny Hop Parade",
         "image": "parade",
         "text": (
             "Millie led a parade around the table leg, across the blanket, and past the pantry door. "
@@ -715,8 +715,8 @@ CHARACTERS = {
     },
     "millie": {
         "name": "Millie",
-        "description": "Millie the curious mouse cousin",
-        "button": "Play as Millie the mouse",
+        "description": "Millie the curious bunny cousin",
+        "button": "Play as Millie the bunny",
     },
 }
 
@@ -936,7 +936,7 @@ class MelodyGame:
         self.draw_cat(180, 122, scale=0.82, body="#f4a261", stripes="#bc6c25", name="Melody")
         self.draw_dog(74, 198, scale=0.62, name="Callum")
         self.draw_dino(282, 198, scale=0.62, name="Ledger")
-        self.draw_mouse(270, 104, scale=0.58, name="Millie")
+        self.draw_bunny(270, 104, scale=0.58, name="Millie")
 
     def draw_scene(self, image_key):
         self.canvas.delete("all")
@@ -1011,7 +1011,7 @@ class MelodyGame:
         elif character_id == "ledger":
             self.draw_dino(x, y, scale=scale, name="Ledger")
         elif character_id == "millie":
-            self.draw_mouse(x, y, scale=scale, name="Millie")
+            self.draw_bunny(x, y, scale=scale, name="Millie")
 
     def draw_cat(self, x, y, scale, body, stripes, name):
         s = scale
@@ -1089,24 +1089,24 @@ class MelodyGame:
         self.canvas.create_line(x + 18 * s, y + 62 * s, x + 30 * s, y + 86 * s, fill=dark_green, width=max(5, int(8 * s)))
         self.canvas.create_text(x, y + 96 * s, text=name, fill="#3f3428", font=("Segoe UI", max(9, int(11 * s)), "bold"))
 
-    def draw_mouse(self, x, y, scale, name):
+    def draw_bunny(self, x, y, scale, name):
         s = scale
-        body = "#b7a7a0"
+        body = "#d7d0c8"
         outline = "#5c514b"
-        ear = "#f2c6c2"
+        ear = "#f4bfc2"
         self.canvas.create_oval(x - 40 * s, y - 2 * s, x + 42 * s, y + 58 * s, fill=body, outline=outline, width=2)
         self.canvas.create_oval(x - 32 * s, y - 58 * s, x + 32 * s, y + 6 * s, fill=body, outline=outline, width=2)
-        self.canvas.create_oval(x - 50 * s, y - 68 * s, x - 18 * s, y - 34 * s, fill=body, outline=outline, width=2)
-        self.canvas.create_oval(x + 18 * s, y - 68 * s, x + 50 * s, y - 34 * s, fill=body, outline=outline, width=2)
-        self.canvas.create_oval(x - 42 * s, y - 60 * s, x - 24 * s, y - 42 * s, fill=ear, outline="")
-        self.canvas.create_oval(x + 24 * s, y - 60 * s, x + 42 * s, y - 42 * s, fill=ear, outline="")
+        self.canvas.create_oval(x - 32 * s, y - 118 * s, x - 10 * s, y - 50 * s, fill=body, outline=outline, width=2)
+        self.canvas.create_oval(x + 10 * s, y - 118 * s, x + 32 * s, y - 50 * s, fill=body, outline=outline, width=2)
+        self.canvas.create_oval(x - 27 * s, y - 106 * s, x - 15 * s, y - 60 * s, fill=ear, outline="")
+        self.canvas.create_oval(x + 15 * s, y - 106 * s, x + 27 * s, y - 60 * s, fill=ear, outline="")
         self.canvas.create_oval(x - 13 * s, y - 34 * s, x - 5 * s, y - 26 * s, fill="#1f2933", outline="")
         self.canvas.create_oval(x + 5 * s, y - 34 * s, x + 13 * s, y - 26 * s, fill="#1f2933", outline="")
         self.canvas.create_oval(x - 4 * s, y - 20 * s, x + 4 * s, y - 12 * s, fill="#7d4f50", outline="")
         for side in [-1, 1]:
             self.canvas.create_line(x + side * 3 * s, y - 16 * s, x + side * 32 * s, y - 23 * s, fill=outline)
             self.canvas.create_line(x + side * 3 * s, y - 13 * s, x + side * 34 * s, y - 12 * s, fill=outline)
-        self.canvas.create_arc(x + 28 * s, y + 16 * s, x + 104 * s, y + 72 * s, start=105, extent=210, style="arc", outline=outline, width=max(3, int(6 * s)))
+        self.canvas.create_oval(x + 24 * s, y + 34 * s, x + 48 * s, y + 58 * s, fill="#ffffff", outline=outline, width=1)
         self.canvas.create_line(x - 22 * s, y + 12 * s, x + 20 * s, y + 12 * s, fill="#7aa7c7", width=max(3, int(5 * s)))
         self.canvas.create_text(x, y + 78 * s, text=name, fill="#3f3428", font=("Segoe UI", max(9, int(11 * s)), "bold"))
 
