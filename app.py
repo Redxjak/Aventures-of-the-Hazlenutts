@@ -1104,7 +1104,7 @@ class MelodyGame:
             button.pack(fill="x", pady=5)
 
         self.back_button.config(state="normal" if self.history else "disabled")
-        self.draw_scene(scene["image"])
+        self.draw_scene(scene)
 
     def go_back(self):
         if not self.history:
@@ -1137,8 +1137,9 @@ class MelodyGame:
         for character_id, x, y, scale in lineup:
             self.draw_character(character_id, x, y, scale)
 
-    def draw_scene(self, image_key):
+    def draw_scene(self, scene):
         self.canvas.delete("all")
+        image_key = scene["image"]
         bg, accent, pop = PALETTES.get(image_key, PALETTES["bedroom"])
         width = int(self.canvas["width"])
         height = int(self.canvas["height"])
@@ -1162,25 +1163,24 @@ class MelodyGame:
         else:
             self.draw_stars(accent, pop)
 
-        self.draw_adventurers()
+        self.draw_adventurers(scene)
 
         if image_key == "queen":
             self.canvas.create_arc(135, 63, 222, 122, start=0, extent=180, style="arc", width=4, outline="#f9c74f")
             for x, y in [(147, 81), (178, 66), (209, 81)]:
                 self.canvas.create_oval(x - 8, y - 8, x + 8, y + 8, fill="#f9c74f", outline="#c08700")
 
-    def draw_adventurers(self):
+    def draw_adventurers(self, scene):
         hero = self.current_character if self.current_character in PLAYABLE_CHARACTER_ORDER else "melody"
-        side_characters = [character_id for character_id in PLAYABLE_CHARACTER_ORDER if character_id != hero]
+        side_characters = [character_id for character_id in self.active_scene_characters(scene) if character_id != hero]
         left_side = side_characters[:4]
         right_side = side_characters[4:]
 
-        side_rows = [58, 104, 150, 196]
         for index, character_id in enumerate(left_side):
-            self.draw_character(character_id, 58, side_rows[index], 0.33)
+            self.draw_character(character_id, 58, self.side_row_y(index, len(left_side)), 0.33)
 
         for index, character_id in enumerate(right_side):
-            self.draw_character(character_id, 302, side_rows[index], 0.33)
+            self.draw_character(character_id, 302, self.side_row_y(index, len(right_side)), 0.33)
 
         hero_scale = 0.78
         if hero == "millie":
@@ -1191,6 +1191,33 @@ class MelodyGame:
             hero_scale = 0.82
 
         self.draw_character(hero, 180, 198, hero_scale)
+
+    def active_scene_characters(self, scene):
+        scene_text = " ".join(
+            [
+                scene["title"],
+                scene["text"],
+                " ".join(label for label, _ in scene["choices"]),
+            ]
+        ).lower()
+        active = [self.current_character] if self.current_character else []
+        for character_id in PLAYABLE_CHARACTER_ORDER:
+            info = CHARACTERS[character_id]
+            names = {info["name"].lower(), info["description"].lower()}
+            if character_id in COUSIN_HEROES:
+                names.add(COUSIN_HEROES[character_id]["full_name"].lower())
+            if any(name in scene_text for name in names):
+                active.append(character_id)
+        return [character_id for character_id in PLAYABLE_CHARACTER_ORDER if character_id in set(active)]
+
+    def side_row_y(self, index, total):
+        if total <= 1:
+            return 116
+        if total == 2:
+            return [88, 162][index]
+        if total == 3:
+            return [66, 126, 186][index]
+        return [54, 104, 154, 204][index]
 
     def draw_character(self, character_id, x, y, scale):
         if character_id == "melody":
