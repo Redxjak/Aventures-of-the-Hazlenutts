@@ -930,6 +930,7 @@ class MelodyGame:
         self.current_scene = "start"
         self.history = []
         self.character_select_art = None
+        self.sprite_images = {}
 
         self.title_font = font.Font(family="Georgia", size=24, weight="bold")
         self.body_font = font.Font(family="Segoe UI", size=14)
@@ -1027,6 +1028,15 @@ class MelodyGame:
         art_path = Path(__file__).with_name("assets") / "character-cards.png"
         if art_path.exists():
             self.character_select_art = tk.PhotoImage(file=str(art_path))
+        sprite_root = Path(__file__).with_name("assets") / "sprites"
+        for character_id in PLAYABLE_CHARACTER_ORDER:
+            variants = {}
+            for size in ["small", "medium", "large"]:
+                sprite_path = sprite_root / f"{character_id}-{size}.png"
+                if sprite_path.exists():
+                    variants[size] = tk.PhotoImage(file=str(sprite_path))
+            if variants:
+                self.sprite_images[character_id] = variants
 
         self.show_character_select()
 
@@ -1220,6 +1230,9 @@ class MelodyGame:
         return [54, 104, 154, 204][index]
 
     def draw_character(self, character_id, x, y, scale):
+        if self.draw_sprite_character(character_id, x, y, scale):
+            return
+
         if character_id == "melody":
             self.draw_cat(x, y, scale=scale, body="#f4a261", stripes="#bc6c25", name="Melody")
         elif character_id == "callum":
@@ -1230,6 +1243,28 @@ class MelodyGame:
             self.draw_bunny(x, y, scale=scale, name="Millie")
         elif character_id in COUSIN_HEROES:
             self.draw_cousin(character_id, x, y, scale)
+
+    def draw_sprite_character(self, character_id, x, y, scale):
+        variants = self.sprite_images.get(character_id)
+        if not variants:
+            return False
+        if scale <= 0.45:
+            size = "small"
+        elif scale <= 0.65:
+            size = "medium"
+        else:
+            size = "large"
+        image = variants.get(size) or variants.get("large") or next(iter(variants.values()))
+        bottom = y + 90 * scale
+        self.canvas.create_image(x, bottom, image=image, anchor="s")
+        self.canvas.create_text(
+            x,
+            bottom + 12,
+            text=CHARACTERS[character_id]["name"],
+            fill="#3f3428",
+            font=("Segoe UI", max(8, int(11 * scale)), "bold"),
+        )
+        return True
 
     def draw_cousin(self, character_id, x, y, scale):
         hero = COUSIN_HEROES[character_id]
