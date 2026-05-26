@@ -1112,15 +1112,19 @@ class MelodyGame:
         self.canvas.create_oval(-70, -70, 150, 112, fill="#ffffff", outline="")
         self.canvas.create_oval(220, 185, 460, 370, fill="#ffffff", outline="")
         self.draw_stars("#f4a261", "#ff70a6")
-        self.draw_cat(180, 122, scale=0.82, body="#f4a261", stripes="#bc6c25", name="Melody")
-        self.draw_dog(74, 198, scale=0.62, name="Callum")
-        self.draw_dino(282, 198, scale=0.62, name="Ledger")
-        self.draw_bunny(270, 104, scale=0.58, name="Millie")
-        self.draw_cousin("lily", 62, 90, 0.42)
-        self.draw_cousin("mason", 120, 80, 0.42)
-        self.draw_cousin("oliver", 240, 78, 0.42)
-        self.draw_cousin("gemma", 320, 92, 0.42)
-        self.draw_cousin("nora", 325, 210, 0.42)
+        lineup = [
+            ("melody", 70, 82, 0.38),
+            ("callum", 180, 82, 0.38),
+            ("ledger", 290, 82, 0.36),
+            ("millie", 70, 168, 0.42),
+            ("lily", 180, 168, 0.38),
+            ("mason", 290, 168, 0.38),
+            ("oliver", 70, 252, 0.38),
+            ("gemma", 180, 252, 0.38),
+            ("nora", 290, 252, 0.38),
+        ]
+        for character_id, x, y, scale in lineup:
+            self.draw_character(character_id, x, y, scale)
 
     def draw_scene(self, image_key):
         self.canvas.delete("all")
