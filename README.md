@@ -24,9 +24,10 @@ Choose Melody, Callum, Ledger, or Millie as the hero. Then read each scene toget
 - Millie as their curious mouse cousin
 - Mama Bear as the kids' caring mom
 - Daddy Monkey as their silly dad
-- Grandma GiGi and Papa Troy as Mama Bear's parents
-- Grandma Mimi and Papa Dave as Daddy Monkey's parents
-- Auntie Croc and Uncle Zebra as Millie's parents
+- Grandma GiGi and Papa Troy as Mama Bear's parents, featured in some Melody, Callum, and Ledger adventures
+- Grandma Mimi and Papa Dave as Daddy Monkey's parents, featured in some Millie and Melody adventures
+- Auntie Croc as Daddy Monkey's sister and Millie's mom
+- Uncle Zebra as Millie's dad
 - Built-in character illustrations drawn directly in the Python GUI
 - No internet connection or extra packages required
 
