@@ -683,7 +683,7 @@ MILLIE_STORY = {
             "Her tail held the blue ribbon like a flag.\n\n"
             "Grandma Mimi and Papa Dave cheered from the tiny-things shelf, and Auntie Croc and Uncle Zebra "
             "cheered from the front row. "
-            "The Hazlenutts cheered for their cousin, and Millie took the smallest, proudest bow."
+            "The family cheered for their cousin, and Millie took the smallest, proudest bow."
         ),
         "choices": [("Choose another hero", "character_select"), ("Play Millie's story again", "start")],
     },

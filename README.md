@@ -36,13 +36,13 @@ Choose Melody, Callum, Ledger, Millie, Lily, Mason, Oliver, Gemma, or Nora as th
 - Built-in character illustrations drawn directly in the Python GUI
 - No internet connection or extra packages required
 
-## Future Browser Version
+## Browser Version
 
-The story is stored separately from the GUI in the `STORY` dictionary inside `app.py`. That makes it easier to move later into a browser version, where the same scenes and choices could become JSON and be displayed with HTML, CSS, and JavaScript.
+The story also has a browser version in the GitHub Pages site under `FFA/`, where the same scenes and choices are displayed with HTML, CSS, JavaScript, and character sprite images.
 
-Good next steps for a tablet-friendly browser version:
+Good next steps for the browser version:
 
-- Move the `STORY` data into `story.json`
-- Recreate the screen with HTML buttons and a large readable story panel
-- Draw the cats with HTML canvas or use image files
-- Add large touch targets for tablet play
+- Keep the story data in sync between the desktop and browser versions
+- Add more focused family adventures for different character groups
+- Polish the sprite artwork and story scenes as new characters are added
+- Keep large touch targets for tablet play
