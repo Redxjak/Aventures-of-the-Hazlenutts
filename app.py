@@ -509,10 +509,179 @@ LEDGER_STORY = {
 }
 
 
+MILLIE_STORY = {
+    "start": {
+        "title": "Millie and the Teacup Trail",
+        "image": "kitchen",
+        "text": (
+            "Millie the Mouse arrived for cousin day with a thimble-sized backpack, a blue ribbon, "
+            "and a very important squeak. She was Melody, Callum, and Ledger's cousin, and she knew "
+            "small heroes could find clues that big paws missed.\n\n"
+            "Mama Bear set a tiny teacup on the table and said, \"Welcome, Millie.\" Daddy Monkey "
+            "balanced a crumb on his nose and whispered, \"The house has been waiting for a mouse-sized mystery.\""
+        ),
+        "choices": [
+            ("Inspect the teacup", "teacup_clue"),
+            ("Follow the ribbon under the sofa", "sofa_tunnel"),
+        ],
+    },
+    "teacup_clue": {
+        "title": "The Teacup Clue",
+        "image": "note",
+        "text": (
+            "Inside the teacup, Millie found a folded note no bigger than a cracker crumb. It said, "
+            "\"The Whispering Crumbs need a brave cousin. Bring kindness and a good listening ear.\"\n\n"
+            "Melody leaned close, Callum held very still, and Ledger wrote, \"Mouse clues are highly official.\""
+        ),
+        "choices": [
+            ("Listen for whispering crumbs", "crumb_whispers"),
+            ("Ask Mama Bear about the note", "mama_advice"),
+        ],
+    },
+    "sofa_tunnel": {
+        "title": "The Sofa Tunnel",
+        "image": "sofa",
+        "text": (
+            "Millie followed the ribbon under Sofa Mountain, where the dust looked like fluffy clouds "
+            "and a lost button shone like a moon.\n\n"
+            "Callum tried to peek underneath and bumped his nose. Millie patted it and said, "
+            "\"This is cousin-sized exploring.\""
+        ),
+        "choices": [
+            ("Rescue the moon button", "button_rescue"),
+            ("Crawl toward the pantry light", "pantry_path"),
+        ],
+    },
+    "mama_advice": {
+        "title": "Mama Bear's Tiny Advice",
+        "image": "kitchen",
+        "text": (
+            "Mama Bear crouched beside Millie and said, \"Tiny paws are perfect for gentle jobs.\" "
+            "She tied Millie's blue ribbon into a neat adventure bow.\n\n"
+            "Daddy Monkey handed Millie a raisin and called it emergency treasure. Millie accepted, "
+            "because every explorer needs supplies."
+        ),
+        "choices": [
+            ("Follow the note to the pantry", "pantry_path"),
+            ("Share the raisin with the team", "picnic_ending"),
+        ],
+    },
+    "crumb_whispers": {
+        "title": "The Whispering Crumbs",
+        "image": "pantry",
+        "text": (
+            "Millie pressed one ear to the floor. The crumbs whispered, \"This way, this way,\" "
+            "in tiny crunchy voices. They led her to a pantry shelf where a jam jar had lost its giggle.\n\n"
+            "Ledger gasped. Melody blinked wisely. Callum promised not to eat any clue that was currently talking."
+        ),
+        "choices": [
+            ("Help the jam jar giggle", "jam_giggle"),
+            ("Build a crumb bridge", "crumb_bridge"),
+        ],
+    },
+    "button_rescue": {
+        "title": "The Moon Button Rescue",
+        "image": "laundry",
+        "text": (
+            "Millie nudged the lost button out from under the sofa. It rolled across the floor and stopped "
+            "beside Daddy Monkey's foot.\n\n"
+            "\"A moon for the map!\" Daddy Monkey cheered. Mama Bear smiled and gave Millie a proud little nod."
+        ),
+        "choices": [
+            ("Add the moon button to the map", "map_ending"),
+            ("Follow the button's roll to the pantry", "pantry_path"),
+        ],
+    },
+    "pantry_path": {
+        "title": "The Pantry Path",
+        "image": "pantry",
+        "text": (
+            "The pantry smelled like crackers, cinnamon, and adventure. Millie climbed a spoon like a ladder "
+            "and found the jam jar hiding behind a flour bag.\n\n"
+            "The jar whispered, \"I forgot my giggle, and now the Giggle Garden will be quiet.\""
+        ),
+        "choices": [
+            ("Carry the giggle to the garden", "garden_giggle"),
+            ("Ask the crumbs to help", "crumb_bridge"),
+        ],
+    },
+    "crumb_bridge": {
+        "title": "The Crumb Bridge",
+        "image": "map",
+        "text": (
+            "Millie lined the crumbs into a tiny bridge across the map. Each crumb pointed toward the garden, "
+            "and the moon button made the path shine.\n\n"
+            "Melody called it beautiful. Callum called it snack architecture. Ledger called it science with crumbs."
+        ),
+        "choices": [
+            ("March across the crumb bridge", "garden_giggle"),
+            ("Save the bridge on the map", "map_ending"),
+        ],
+    },
+    "jam_giggle": {
+        "title": "The Jam Jar Giggle",
+        "image": "bell",
+        "text": (
+            "Millie tapped the jar with her tail. Tink, tink, squeak! A tiny giggle bubbled up through the jam.\n\n"
+            "Daddy Monkey made his silliest face in the shiny lid. Mama Bear hummed a soft song. "
+            "The giggle grew warm and bright enough to carry."
+        ),
+        "choices": [
+            ("Bring the giggle to the garden", "garden_giggle"),
+            ("Celebrate with a tiny picnic", "picnic_ending"),
+        ],
+    },
+    "garden_giggle": {
+        "title": "Millie Saves a Little Giggle",
+        "image": "garden",
+        "text": (
+            "In the Giggle Garden, Millie opened the jam jar and released one tiny giggle. It bounced from "
+            "flower to flower until the whole garden shimmered.\n\n"
+            "Melody purred, Callum wagged, and Ledger added Millie's cousin-sized victory to the map."
+        ),
+        "choices": [
+            ("Lead a mouse parade", "parade_ending"),
+            ("Draw Millie's path on the map", "map_ending"),
+        ],
+    },
+    "picnic_ending": {
+        "title": "Millie's Tiny Picnic",
+        "image": "picnic",
+        "text": (
+            "Millie shared the raisin treasure, the jam jar giggle, and three heroic crumbs. "
+            "Mama Bear poured juice into the tiniest cup, and Daddy Monkey made a napkin tent just for her.\n\n"
+            "Millie decided cousin day was best when everyone had room at the blanket."
+        ),
+        "choices": [("Choose another hero", "character_select"), ("Play Millie's story again", "start")],
+    },
+    "map_ending": {
+        "title": "Millie's Mouse-Sized Map",
+        "image": "map",
+        "text": (
+            "Millie drew her path with a crumb, a button moon, a teacup, and one bright giggle. "
+            "Ledger added labels, Melody added a heart, and Callum added a snack corner.\n\n"
+            "Mama Bear called it brave. Daddy Monkey called it tiny-but-mighty."
+        ),
+        "choices": [("Choose another hero", "character_select"), ("Play Millie's story again", "start")],
+    },
+    "parade_ending": {
+        "title": "The Tiny Tail Parade",
+        "image": "parade",
+        "text": (
+            "Millie led a parade around the table leg, across the blanket, and past the pantry door. "
+            "Her tail held the blue ribbon like a flag.\n\n"
+            "The Hazlenutts cheered for their cousin, and Millie took the smallest, proudest bow."
+        ),
+        "choices": [("Choose another hero", "character_select"), ("Play Millie's story again", "start")],
+    },
+}
+
+
 STORIES = {
     "melody": STORY,
     "callum": CALLUM_STORY,
     "ledger": LEDGER_STORY,
+    "millie": MILLIE_STORY,
 }
 
 
@@ -531,6 +700,11 @@ CHARACTERS = {
         "name": "Ledger",
         "description": "Ledger the tiny T. rex explorer",
         "button": "Play as Ledger the dinosaur",
+    },
+    "millie": {
+        "name": "Millie",
+        "description": "Millie the curious mouse cousin",
+        "button": "Play as Millie the mouse",
     },
 }
 
@@ -583,7 +757,7 @@ class MelodyGame:
 
         self.subtitle = tk.Label(
             self.main,
-            text="A gentle read-along adventure with Melody, Callum, Ledger, Mama Bear, and Daddy Monkey",
+            text="A gentle read-along adventure with Melody, Callum, Ledger, Millie, Mama Bear, and Daddy Monkey",
             font=("Segoe UI", 11),
             bg="#fffaf0",
             fg="#6b5a45",
@@ -667,7 +841,7 @@ class MelodyGame:
         self.story_text.config(
             text=(
                 "Pick who should lead this adventure. Each hero has their own story arc, "
-                "with Melody, Callum, Ledger, Mama Bear, and Daddy Monkey still helping each other along the way."
+                "with Melody, Callum, Ledger, Millie, Mama Bear, and Daddy Monkey still helping each other along the way."
             )
         )
 
@@ -747,9 +921,10 @@ class MelodyGame:
         self.canvas.create_oval(-70, -70, 150, 112, fill="#ffffff", outline="")
         self.canvas.create_oval(220, 185, 460, 370, fill="#ffffff", outline="")
         self.draw_stars("#f4a261", "#ff70a6")
-        self.draw_cat(178, 132, scale=0.95, body="#f4a261", stripes="#bc6c25", name="Melody")
-        self.draw_dog(76, 198, scale=0.68, name="Callum")
-        self.draw_dino(286, 198, scale=0.68, name="Ledger")
+        self.draw_cat(180, 122, scale=0.82, body="#f4a261", stripes="#bc6c25", name="Melody")
+        self.draw_dog(74, 198, scale=0.62, name="Callum")
+        self.draw_dino(282, 198, scale=0.62, name="Ledger")
+        self.draw_mouse(270, 104, scale=0.58, name="Millie")
 
     def draw_scene(self, image_key):
         self.canvas.delete("all")
@@ -785,24 +960,34 @@ class MelodyGame:
 
     def draw_adventurers(self):
         positions = {
-            "melody": (178, 146, 1.08),
-            "callum": (82, 190, 0.78),
-            "ledger": (274, 190, 0.78),
+            "melody": (178, 145, 1.0),
+            "callum": (72, 198, 0.68),
+            "ledger": (282, 198, 0.68),
+            "millie": (286, 104, 0.58),
         }
         if self.current_character == "callum":
             positions = {
-                "callum": (178, 150, 1.05),
-                "melody": (82, 190, 0.76),
-                "ledger": (274, 190, 0.76),
+                "callum": (178, 150, 1.0),
+                "melody": (72, 198, 0.68),
+                "ledger": (282, 198, 0.68),
+                "millie": (286, 104, 0.58),
             }
         elif self.current_character == "ledger":
             positions = {
-                "ledger": (178, 150, 1.02),
-                "melody": (82, 190, 0.76),
-                "callum": (274, 190, 0.76),
+                "ledger": (178, 150, 0.98),
+                "melody": (72, 198, 0.68),
+                "callum": (282, 198, 0.68),
+                "millie": (286, 104, 0.58),
+            }
+        elif self.current_character == "millie":
+            positions = {
+                "millie": (178, 146, 1.08),
+                "melody": (72, 198, 0.66),
+                "callum": (282, 198, 0.66),
+                "ledger": (276, 102, 0.58),
             }
 
-        for character_id in ["melody", "callum", "ledger"]:
+        for character_id in ["melody", "callum", "ledger", "millie"]:
             x, y, scale = positions[character_id]
             self.draw_character(character_id, x, y, scale)
 
@@ -813,6 +998,8 @@ class MelodyGame:
             self.draw_dog(x, y, scale=scale, name="Callum")
         elif character_id == "ledger":
             self.draw_dino(x, y, scale=scale, name="Ledger")
+        elif character_id == "millie":
+            self.draw_mouse(x, y, scale=scale, name="Millie")
 
     def draw_cat(self, x, y, scale, body, stripes, name):
         s = scale
@@ -889,6 +1076,27 @@ class MelodyGame:
         self.canvas.create_line(x - 18 * s, y + 62 * s, x - 30 * s, y + 86 * s, fill=dark_green, width=max(5, int(8 * s)))
         self.canvas.create_line(x + 18 * s, y + 62 * s, x + 30 * s, y + 86 * s, fill=dark_green, width=max(5, int(8 * s)))
         self.canvas.create_text(x, y + 96 * s, text=name, fill="#3f3428", font=("Segoe UI", max(9, int(11 * s)), "bold"))
+
+    def draw_mouse(self, x, y, scale, name):
+        s = scale
+        body = "#b7a7a0"
+        outline = "#5c514b"
+        ear = "#f2c6c2"
+        self.canvas.create_oval(x - 40 * s, y - 2 * s, x + 42 * s, y + 58 * s, fill=body, outline=outline, width=2)
+        self.canvas.create_oval(x - 32 * s, y - 58 * s, x + 32 * s, y + 6 * s, fill=body, outline=outline, width=2)
+        self.canvas.create_oval(x - 50 * s, y - 68 * s, x - 18 * s, y - 34 * s, fill=body, outline=outline, width=2)
+        self.canvas.create_oval(x + 18 * s, y - 68 * s, x + 50 * s, y - 34 * s, fill=body, outline=outline, width=2)
+        self.canvas.create_oval(x - 42 * s, y - 60 * s, x - 24 * s, y - 42 * s, fill=ear, outline="")
+        self.canvas.create_oval(x + 24 * s, y - 60 * s, x + 42 * s, y - 42 * s, fill=ear, outline="")
+        self.canvas.create_oval(x - 13 * s, y - 34 * s, x - 5 * s, y - 26 * s, fill="#1f2933", outline="")
+        self.canvas.create_oval(x + 5 * s, y - 34 * s, x + 13 * s, y - 26 * s, fill="#1f2933", outline="")
+        self.canvas.create_oval(x - 4 * s, y - 20 * s, x + 4 * s, y - 12 * s, fill="#7d4f50", outline="")
+        for side in [-1, 1]:
+            self.canvas.create_line(x + side * 3 * s, y - 16 * s, x + side * 32 * s, y - 23 * s, fill=outline)
+            self.canvas.create_line(x + side * 3 * s, y - 13 * s, x + side * 34 * s, y - 12 * s, fill=outline)
+        self.canvas.create_arc(x + 28 * s, y + 16 * s, x + 104 * s, y + 72 * s, start=105, extent=210, style="arc", outline=outline, width=max(3, int(6 * s)))
+        self.canvas.create_line(x - 22 * s, y + 12 * s, x + 20 * s, y + 12 * s, fill="#7aa7c7", width=max(3, int(5 * s)))
+        self.canvas.create_text(x, y + 78 * s, text=name, fill="#3f3428", font=("Segoe UI", max(9, int(11 * s)), "bold"))
 
     def draw_flowers(self, accent, pop):
         for x, y in [(48, 238), (314, 230), (62, 92), (296, 88)]:
