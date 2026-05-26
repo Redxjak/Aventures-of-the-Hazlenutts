@@ -887,6 +887,19 @@ CHARACTERS.update(
 )
 
 
+PLAYABLE_CHARACTER_ORDER = [
+    "melody",
+    "callum",
+    "ledger",
+    "millie",
+    "lily",
+    "mason",
+    "oliver",
+    "gemma",
+    "nora",
+]
+
+
 PALETTES = {
     "bedroom": ("#ffe5a8", "#f7b267", "#f79d65"),
     "kitchen": ("#d6f5ff", "#7bdff2", "#f2b5d4"),
@@ -1142,44 +1155,27 @@ class MelodyGame:
                 self.canvas.create_oval(x - 8, y - 8, x + 8, y + 8, fill="#f9c74f", outline="#c08700")
 
     def draw_adventurers(self):
-        positions = {
-            "melody": (178, 145, 1.0),
-            "callum": (72, 198, 0.68),
-            "ledger": (282, 198, 0.68),
-            "millie": (286, 104, 0.58),
-        }
-        if self.current_character == "callum":
-            positions = {
-                "callum": (178, 150, 1.0),
-                "melody": (72, 198, 0.68),
-                "ledger": (282, 198, 0.68),
-                "millie": (286, 104, 0.58),
-            }
-        elif self.current_character == "ledger":
-            positions = {
-                "ledger": (178, 150, 0.98),
-                "melody": (72, 198, 0.68),
-                "callum": (282, 198, 0.68),
-                "millie": (286, 104, 0.58),
-            }
-        elif self.current_character == "millie":
-            positions = {
-                "millie": (178, 146, 1.08),
-                "melody": (72, 198, 0.66),
-                "callum": (282, 198, 0.66),
-                "ledger": (276, 102, 0.58),
-            }
-        elif self.current_character in COUSIN_HEROES:
-            positions = {
-                self.current_character: (178, 150, 1.0),
-                "melody": (72, 198, 0.64),
-                "callum": (282, 198, 0.64),
-                "millie": (286, 104, 0.56),
-            }
+        hero = self.current_character if self.current_character in PLAYABLE_CHARACTER_ORDER else "melody"
+        side_characters = [character_id for character_id in PLAYABLE_CHARACTER_ORDER if character_id != hero]
+        left_side = side_characters[:4]
+        right_side = side_characters[4:]
 
-        for character_id in positions:
-            x, y, scale = positions[character_id]
-            self.draw_character(character_id, x, y, scale)
+        side_rows = [58, 104, 150, 196]
+        for index, character_id in enumerate(left_side):
+            self.draw_character(character_id, 58, side_rows[index], 0.33)
+
+        for index, character_id in enumerate(right_side):
+            self.draw_character(character_id, 302, side_rows[index], 0.33)
+
+        hero_scale = 0.78
+        if hero == "millie":
+            hero_scale = 0.9
+        elif hero == "ledger":
+            hero_scale = 0.74
+        elif hero in COUSIN_HEROES:
+            hero_scale = 0.82
+
+        self.draw_character(hero, 180, 198, hero_scale)
 
     def draw_character(self, character_id, x, y, scale):
         if character_id == "melody":
