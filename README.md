@@ -2,7 +2,7 @@
 
 A kid-friendly, mostly text-based Python adventure game starring Melody the cat, Callum the dog, Ledger the dinosaur, Millie the bunny cousin, Lily the beaver, Mason the dragon, Oliver the husky, Gemma the hedgehog, Nora the kangaroo, and the wider family.
 
-Current version: v1.1.0.
+Current version: v1.1.3.
 
 ## Latest Updates
 

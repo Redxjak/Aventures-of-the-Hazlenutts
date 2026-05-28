@@ -5,7 +5,7 @@ from pathlib import Path
 
 
 APP_TITLE = "Fun Family Adventures"
-APP_VERSION = "v1.1.0"
+APP_VERSION = "v1.1.3"
 RELEASE_NOTES = [
     "Added support for the updated FFA character branching story brief.",
     "Added story selection after choosing a hero.",
