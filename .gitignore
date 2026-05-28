@@ -2,3 +2,5 @@
 .venv/
 __pycache__/
 *.pyc
+*.twine.html
+LOCAL_FFA_PROJECT_NOTES.md
