@@ -4,6 +4,17 @@ from pathlib import Path
 
 
 APP_TITLE = "Fun Family Adventures"
+APP_VERSION = "v0.2.0"
+RELEASE_NOTES = [
+    "Added story selection after choosing a hero.",
+    "Added a Family Map Quest that can star any hero.",
+    "Added end-of-story choices to pick another story or another hero.",
+]
+
+
+def release_notes_text():
+    updates = "\n".join(f"- {note}" for note in RELEASE_NOTES)
+    return f"Current version: {APP_VERSION}.\n\nUpdates\n{updates}"
 
 
 STORY = {
@@ -854,6 +865,182 @@ STORIES = {
 STORIES.update({key: make_cousin_story(hero) for key, hero in COUSIN_HEROES.items()})
 
 
+HERO_STORY_DETAILS = {
+    "melody": {
+        "full_name": "Melody the Cat",
+        "gift": "finding cozy clues with brave little paws",
+        "tool": "a jingly adventure bell",
+        "sound": "jingle-jingle-brave",
+    },
+    "callum": {
+        "full_name": "Callum the Dog",
+        "gift": "sniffing out snack emergencies",
+        "tool": "a backpack full of crackers",
+        "sound": "ruff-rescue",
+    },
+    "ledger": {
+        "full_name": "Ledger the Dinosaur",
+        "gift": "reading maps and naming important discoveries",
+        "tool": "a crayon map",
+        "sound": "rawr-research",
+    },
+    "millie": {
+        "full_name": "Millie the Bunny",
+        "gift": "finding tiny clues in tiny places",
+        "tool": "a blue ribbon",
+        "sound": "hop-hop-found-it",
+    },
+}
+HERO_STORY_DETAILS.update(
+    {
+        key: {
+            "full_name": hero["full_name"],
+            "gift": hero["gift"],
+            "tool": hero["tool"],
+            "sound": hero["sound"],
+        }
+        for key, hero in COUSIN_HEROES.items()
+    }
+)
+
+
+def make_family_map_story(hero):
+    name = hero["full_name"].split()[0]
+    return {
+        "start": {
+            "title": f"{name}'s Family Map Quest",
+            "image": "map",
+            "text": (
+                f"{hero['full_name']} found a big family map spread across the living room rug. "
+                "Some of the bright ribbon paths had slipped loose, and nobody could tell which way "
+                "led to the snack table, the garden, or the cozy story blanket.\n\n"
+                f"{name} knew this was a job for {hero['gift']}."
+            ),
+            "choices": [
+                ("Follow the loose ribbon path", "ribbon_path"),
+                ("Ask the family for clues", "family_clues"),
+            ],
+        },
+        "ribbon_path": {
+            "title": "The Loose Ribbon Path",
+            "image": "hallway",
+            "text": (
+                f"{name} followed the ribbon past the sofa, around the toy basket, and under one very "
+                "wiggly blanket corner. Melody held one end, Callum guarded the snacks, and Ledger "
+                "announced that the path was officially mysterious.\n\n"
+                f"At the end of the ribbon sat {hero['tool']} with a note tucked beside it."
+            ),
+            "choices": [
+                ("Read the tucked-away note", "note_clue"),
+                ("Carry the tool to the garden", "garden_fix"),
+            ],
+        },
+        "family_clues": {
+            "title": "Everybody Helps",
+            "image": "supplies",
+            "text": (
+                "Mama Bear remembered the garden path. Daddy Monkey remembered the silly shortcut. "
+                "Gigi and Papa Gecko remembered where the picnic blanket belonged.\n\n"
+                f"{name} listened carefully, then made the official helper sound: \"{hero['sound']}!\""
+            ),
+            "choices": [
+                ("Add the clues to the map", "map_fix"),
+                ("Bring everyone to the garden", "garden_fix"),
+            ],
+        },
+        "note_clue": {
+            "title": "A Note From the Map",
+            "image": "note",
+            "text": (
+                "The note said, \"A family map works best when everybody gets a place and every place "
+                "gets a giggle.\"\n\n"
+                f"{name} smiled, because that sounded like exactly the kind of puzzle a family could solve together."
+            ),
+            "choices": [
+                ("Fix the family map", "map_fix"),
+                ("Test the path in the garden", "garden_fix"),
+            ],
+        },
+        "map_fix": {
+            "title": "The Map Comes Together",
+            "image": "map",
+            "text": (
+                f"{name} placed every ribbon carefully. Melody got the sunbeam path, Callum got the "
+                "snack path, Ledger got the discovery path, and Millie got the tiny clue path.\n\n"
+                "The map shimmered with happy colors. It was ready for a parade."
+            ),
+            "choices": [
+                ("Lead a map parade", "parade_ending"),
+                ("Save the map for story time", "story_blanket_ending"),
+            ],
+        },
+        "garden_fix": {
+            "title": "The Garden Path",
+            "image": "garden",
+            "text": (
+                f"{name} carried the map outside, where the flowers leaned close to see. "
+                "When the last ribbon path touched the garden gate, every flower gave a tiny giggle.\n\n"
+                "The family clapped, because the map had found its way home."
+            ),
+            "choices": [
+                ("Celebrate with flower giggles", "garden_ending"),
+                ("Take the map back inside", "story_blanket_ending"),
+            ],
+        },
+        "parade_ending": {
+            "title": f"{name}'s Map Parade",
+            "image": "parade",
+            "text": (
+                f"{name} led the family around the whole map route: past Sofa Mountain, through the "
+                "blanket tunnel, around the snack table, and all the way to the garden door.\n\n"
+                "Every ribbon stayed in place, and every helper got a cheer."
+            ),
+            "choices": [("Choose another story", "story_select"), ("Choose another hero", "character_select"), ("Play this story again", "start")],
+        },
+        "garden_ending": {
+            "title": "The Giggle Path",
+            "image": "garden",
+            "text": (
+                "The flowers giggled so brightly that the whole garden seemed to sparkle. "
+                f"{name} gave a proud little nod, and the family map became the official guide "
+                "for all future cozy adventures."
+            ),
+            "choices": [("Choose another story", "story_select"), ("Choose another hero", "character_select"), ("Play this story again", "start")],
+        },
+        "story_blanket_ending": {
+            "title": "The Story Blanket",
+            "image": "nap",
+            "text": (
+                "Back inside, Mama Bear spread the cozy story blanket over everyone. Daddy Monkey "
+                "used the map to tell a very silly tale with three snack breaks.\n\n"
+                f"{name} rested beside the finished map, ready for the next adventure."
+            ),
+            "choices": [("Choose another story", "story_select"), ("Choose another hero", "character_select"), ("Play this story again", "start")],
+        },
+    }
+
+
+STORY_OPTIONS = {
+    character_id: [
+        {
+            "id": "signature",
+            "title": STORIES[character_id]["start"]["title"],
+            "description": f"A special adventure starring {HERO_STORY_DETAILS[character_id]['full_name']}.",
+            "button": "Play the special adventure",
+            "scenes": STORIES[character_id],
+        },
+        {
+            "id": "family_map",
+            "title": f"{HERO_STORY_DETAILS[character_id]['full_name'].split()[0]}'s Family Map Quest",
+            "description": "A family helper adventure about fixing the map and finding the giggle path.",
+            "button": "Play the family map quest",
+            "scenes": make_family_map_story(HERO_STORY_DETAILS[character_id]),
+        },
+    ]
+    for character_id in STORIES
+}
+
+
 CHARACTERS = {
     "melody": {
         "name": "Melody",
@@ -927,6 +1114,8 @@ class MelodyGame:
         self.root.title(APP_TITLE)
         self.root.minsize(760, 640)
         self.current_character = None
+        self.current_story_id = None
+        self.current_story_scenes = None
         self.current_scene = "start"
         self.history = []
         self.character_select_art = None
@@ -951,7 +1140,7 @@ class MelodyGame:
 
         self.subtitle = tk.Label(
             self.main,
-            text="A gentle read-along adventure with the whole family",
+            text=f"A gentle read-along adventure with the whole family. Current version: {APP_VERSION}.",
             font=("Segoe UI", 11),
             bg="#fffaf0",
             fg="#6b5a45",
@@ -995,6 +1184,18 @@ class MelodyGame:
             pady=0,
         )
         self.story_text.pack(anchor="w", fill="x")
+
+        self.release_notes = tk.Message(
+            self.story_panel,
+            text=release_notes_text(),
+            font=("Segoe UI", 10),
+            bg="#fff4dc",
+            fg="#5f4a34",
+            width=520,
+            padx=12,
+            pady=10,
+            relief="flat",
+        )
 
         self.choices_frame = tk.Frame(self.story_panel, bg="#fffaf0")
         self.choices_frame.pack(anchor="w", fill="x", pady=(18, 0))
@@ -1042,6 +1243,8 @@ class MelodyGame:
 
     def show_character_select(self):
         self.current_character = None
+        self.current_story_id = None
+        self.current_story_scenes = None
         self.current_scene = "character_select"
         self.history = []
         self.canvas.pack_forget()
@@ -1057,6 +1260,7 @@ class MelodyGame:
                 "with the family still helping each other along the way."
             )
         )
+        self.show_release_notes(anchor="center")
 
         for child in self.choices_frame.winfo_children():
             child.destroy()
@@ -1069,7 +1273,7 @@ class MelodyGame:
                 image=sprite,
                 compound="right",
                 font=self.button_font,
-                command=lambda hero=character_id: self.start_story(hero),
+                command=lambda hero=character_id: self.show_story_select(hero, reset_history=True),
                 bg="#88d498",
                 fg="#17351f",
                 activebackground="#6cc57e",
@@ -1085,8 +1289,60 @@ class MelodyGame:
         self.back_button.config(state="disabled")
         self.draw_character_select()
 
-    def start_story(self, character_id):
+    def show_story_select(self, character_id=None, reset_history=False):
+        character_changed = character_id is not None and character_id != self.current_character
+        if character_id is not None:
+            self.current_character = character_id
+        if not self.current_character:
+            self.show_character_select()
+            return
+
+        if reset_history or character_changed:
+            self.current_story_id = None
+            self.current_story_scenes = None
+        self.current_scene = "story_select"
+        if reset_history:
+            self.history = ["character_select"]
+
+        self.canvas.pack_forget()
+        self.story_panel.pack_configure(expand=True)
+        hero_name = CHARACTERS[self.current_character]["name"]
+        self.scene_title.config(text=f"Choose {hero_name}'s Story")
+        self.scene_title.config(justify="center")
+        self.scene_title.pack_configure(anchor="center")
+        self.story_text.config(justify="center", width=520)
+        self.story_text.pack_configure(anchor="center")
+        self.story_text.config(text="Pick which adventure to read and play together.")
+        self.show_release_notes(anchor="center")
+
+        for child in self.choices_frame.winfo_children():
+            child.destroy()
+
+        for story in STORY_OPTIONS[self.current_character]:
+            button = tk.Button(
+                self.choices_frame,
+                text=f"{story['title']}\n{story['description']}",
+                font=self.button_font,
+                command=lambda story_id=story["id"]: self.start_story(self.current_character, story_id),
+                bg="#88d498",
+                fg="#17351f",
+                activebackground="#6cc57e",
+                relief="flat",
+                padx=14,
+                pady=10,
+                wraplength=460,
+                justify="left",
+            )
+            button.pack(fill="x", pady=6)
+
+        self.back_button.config(state="normal")
+        self.draw_story_select()
+
+    def start_story(self, character_id, story_id):
         self.current_character = character_id
+        story = self.find_story_option(character_id, story_id)
+        self.current_story_id = story_id
+        self.current_story_scenes = story["scenes"]
         self.history = []
         self.show_scene("start", remember=False)
 
@@ -1094,6 +1350,15 @@ class MelodyGame:
         if scene_id == "character_select":
             self.show_character_select()
             return
+        if scene_id == "story_select":
+            if remember:
+                self.history.append(self.current_scene)
+            self.show_story_select()
+            return
+        if self.current_story_scenes is None:
+            self.show_story_select(self.current_character, reset_history=True)
+            return
+        self.hide_release_notes()
 
         if not self.canvas.winfo_ismapped():
             self.story_panel.pack_forget()
@@ -1108,7 +1373,7 @@ class MelodyGame:
             self.history.append(self.current_scene)
 
         self.current_scene = scene_id
-        scene = STORIES[self.current_character][scene_id]
+        scene = self.current_story_scenes[scene_id]
         self.scene_title.config(text=scene["title"])
         self.story_text.config(text=scene["text"])
 
@@ -1141,6 +1406,19 @@ class MelodyGame:
         previous = self.history.pop()
         self.show_scene(previous, remember=False)
 
+    def find_story_option(self, character_id, story_id):
+        for story in STORY_OPTIONS[character_id]:
+            if story["id"] == story_id:
+                return story
+        return STORY_OPTIONS[character_id][0]
+
+    def show_release_notes(self, anchor="w"):
+        self.release_notes.config(text=release_notes_text())
+        self.release_notes.pack(anchor=anchor, fill="x", pady=(12, 0))
+
+    def hide_release_notes(self):
+        self.release_notes.pack_forget()
+
     def draw_character_select(self):
         self.canvas.delete("all")
         if self.character_select_art:
@@ -1165,6 +1443,22 @@ class MelodyGame:
         ]
         for character_id, x, y, scale in lineup:
             self.draw_character(character_id, x, y, scale)
+
+    def draw_story_select(self):
+        self.canvas.delete("all")
+        self.canvas.create_rectangle(0, 0, 360, 300, fill="#fff1a8", outline="")
+        self.canvas.create_oval(-70, -70, 150, 112, fill="#ffffff", outline="")
+        self.canvas.create_oval(220, 185, 460, 370, fill="#ffffff", outline="")
+        self.draw_stars("#f4a261", "#ff70a6")
+        if self.current_character:
+            self.draw_character(self.current_character, 180, 170, 0.72)
+        self.canvas.create_text(
+            180,
+            42,
+            text="Which story today?",
+            font=("Georgia", 18, "bold"),
+            fill="#4a3b2a",
+        )
 
     def draw_scene(self, scene):
         self.canvas.delete("all")

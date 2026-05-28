@@ -2,6 +2,14 @@
 
 A kid-friendly, mostly text-based Python adventure game starring Melody the cat, Callum the dog, Ledger the dinosaur, Millie the bunny cousin, Lily the beaver, Mason the dragon, Oliver the husky, Gemma the hedgehog, Nora the kangaroo, and the wider family.
 
+Current version: v0.2.0.
+
+## Latest Updates
+
+- Added story selection after choosing a hero.
+- Added a Family Map Quest that can star any hero.
+- Added end-of-story choices to pick another story or another hero.
+
 ## How to Play
 
 Run:
@@ -10,13 +18,15 @@ Run:
 python app.py
 ```
 
-Choose Melody, Callum, Ledger, Millie, Lily, Mason, Oliver, Gemma, or Nora as the hero. Then read each scene together and click one of the choice buttons to decide where the adventure goes next.
+Choose Melody, Callum, Ledger, Millie, Lily, Mason, Oliver, Gemma, or Nora as the hero. Then choose which story that hero should play, read each scene together, and click one of the choice buttons to decide where the adventure goes next.
 
 ## What Is Included
 
 - A gentle branching story with multiple endings
 - A hero selection screen
+- A story selection screen after choosing a hero
 - Separate story arcs for Melody, Callum, Ledger, Millie, Lily, Mason, Oliver, Gemma, and Nora
+- A family map quest that can star any chosen hero
 - Funny, safe adventures around the house and garden
 - Melody as the main cat hero
 - Callum as a friendly German shepherd-style dog
