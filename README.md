@@ -2,12 +2,12 @@
 
 A kid-friendly, mostly text-based Python adventure game starring Melody the cat, Callum the dog, Ledger the dinosaur, Millie the bunny cousin, Lily the beaver, Mason the dragon, Oliver the husky, Gemma the hedgehog, Nora the kangaroo, and the wider family.
 
-Current version: v1.1.3.
+Current version: v1.1.4.
 
 ## Latest Updates
 
 - Added story selection after choosing a hero.
-- Added support for the updated FFA character branching story brief.
+- Added five built-in branching adventures each for Melody, Callum, Ledger, and Millie.
 - Added a Family Map Quest that can star any hero.
 - Added end-of-story choices to pick another story or another hero.
 
@@ -26,7 +26,7 @@ Choose Melody, Callum, Ledger, Millie, Lily, Mason, Oliver, Gemma, or Nora as th
 - A gentle branching story with multiple endings
 - A hero selection screen
 - A story selection screen after choosing a hero
-- Five extra branching story briefs each for Melody, Callum, Ledger, and Millie when the updated brief file is present
+- Five extra built-in branching stories each for Melody, Callum, Ledger, and Millie
 - Separate story arcs for Melody, Callum, Ledger, Millie, Lily, Mason, Oliver, Gemma, and Nora
 - A family map quest that can star any chosen hero
 - Funny, safe adventures around the house and garden
@@ -48,9 +48,9 @@ Choose Melody, Callum, Ledger, Millie, Lily, Mason, Oliver, Gemma, or Nora as th
 - Built-in character illustrations drawn directly in the Python GUI
 - No internet connection or extra packages required
 
-## Updated Story Briefs
+## Built-In Branching Stories
 
-The app looks for `FFA_character_branching_stories_for_codex*.md` in the project folder or your Downloads folder. If found, those stories are added to the story picker for Melody, Callum, Ledger, and Millie.
+The extra Melody, Callum, Ledger, and Millie branching stories are built into the app, so no separate story instruction file is needed.
 
 ## Browser Version
 
