@@ -1,11 +1,13 @@
+import re
 import tkinter as tk
 from tkinter import font
 from pathlib import Path
 
 
 APP_TITLE = "Fun Family Adventures"
-APP_VERSION = "v1.0.0"
+APP_VERSION = "v1.1.0"
 RELEASE_NOTES = [
+    "Added support for the updated FFA character branching story brief.",
     "Added story selection after choosing a hero.",
     "Added a Family Map Quest that can star any hero.",
     "Added end-of-story choices to pick another story or another hero.",
@@ -1020,6 +1022,197 @@ def make_family_map_story(hero):
     }
 
 
+BRIEF_CHARACTER_IDS = {
+    "Melody": "melody",
+    "Callum": "callum",
+    "Ledger": "ledger",
+    "Millie": "millie",
+}
+
+
+def clean_brief_text(text):
+    replacements = {
+        "â€œ": "\"",
+        "â€": "\"",
+        "â€™": "'",
+        "â€˜": "'",
+        "â€\"": "-",
+        "â€“": "-",
+        "â€”": "-",
+    }
+    for old, new in replacements.items():
+        text = text.replace(old, new)
+    return text.strip()
+
+
+def find_story_brief():
+    candidates = [
+        Path.cwd() / "FFA_character_branching_stories_for_codex(1).md",
+        Path.cwd() / "FFA_character_branching_stories_for_codex.md",
+    ]
+    downloads = Path.home() / "Downloads"
+    if downloads.exists():
+        candidates.extend(
+            sorted(
+                downloads.glob("FFA_character_branching_stories_for_codex*.md"),
+                key=lambda path: path.stat().st_mtime,
+                reverse=True,
+            )
+        )
+
+    for path in candidates:
+        if not path.exists():
+            continue
+        for encoding in ("utf-8", "cp1252"):
+            try:
+                return path, clean_brief_text(path.read_text(encoding=encoding))
+            except UnicodeDecodeError:
+                continue
+    return None, ""
+
+
+def markdown_section(body, heading):
+    pattern = rf"^### {re.escape(heading)}\s*$"
+    match = re.search(pattern, body, re.MULTILINE)
+    if not match:
+        return ""
+    next_heading = re.search(r"^### ", body[match.end():], re.MULTILINE)
+    end = match.end() + next_heading.start() if next_heading else len(body)
+    return body[match.end():end].strip()
+
+
+def outcome_text(choice_body):
+    lines = []
+    for line in choice_body.strip().splitlines():
+        stripped = line.strip()
+        if not stripped:
+            lines.append("")
+            continue
+        if re.match(r"^(Outcome|[A-Za-z -]+ ending):$", stripped):
+            continue
+        lines.append(stripped)
+    text = "\n".join(lines)
+    text = re.sub(r"\n{3,}", "\n\n", text)
+    return text.strip()
+
+
+def brief_image_for(title, text):
+    lower_text = f"{title} {text}".lower()
+    image_keywords = [
+        ("pie", "kitchen"),
+        ("violin", "note"),
+        ("lantern", "hallway"),
+        ("attic", "bedroom"),
+        ("kitten", "garden"),
+        ("bull", "garden"),
+        ("race", "hallway"),
+        ("cave", "fort"),
+        ("garden", "garden"),
+        ("medicine", "supplies"),
+        ("tea", "picnic"),
+        ("roar", "fort"),
+        ("bridge", "map"),
+        ("rock", "treasure"),
+        ("picnic", "picnic"),
+        ("cheese", "kitchen"),
+        ("library", "note"),
+        ("storm drain", "garden"),
+        ("clocktower", "map"),
+        ("map", "map"),
+    ]
+    for keyword, image in image_keywords:
+        if keyword in lower_text:
+            return image
+    return "garden"
+
+
+def make_brief_story(story_title, lesson, premise, starting_scene, choices):
+    scenes = {
+        "start": {
+            "title": story_title,
+            "image": brief_image_for(story_title, starting_scene),
+            "text": starting_scene,
+            "choices": [
+                (choice["label"], f"choice_{index}")
+                for index, choice in enumerate(choices, start=1)
+            ],
+        }
+    }
+
+    for index, choice in enumerate(choices, start=1):
+        choice_text = outcome_text(choice["body"])
+        scenes[f"choice_{index}"] = {
+            "title": choice["label"],
+            "image": brief_image_for(choice["label"], choice_text),
+            "text": choice_text,
+            "choices": [
+                ("Choose another story", "story_select"),
+                ("Choose another hero", "character_select"),
+                ("Play this story again", "start"),
+            ],
+        }
+
+    description = lesson or premise or "A gentle branching adventure from the updated story brief."
+    return {
+        "title": story_title,
+        "description": description,
+        "scenes": scenes,
+    }
+
+
+def parse_brief_stories():
+    _, text = find_story_brief()
+    if not text:
+        return {}
+
+    stories_by_character = {character_id: [] for character_id in BRIEF_CHARACTER_IDS.values()}
+    story_pattern = re.compile(
+        r"^## (?P<character>Melody|Callum|Ledger|Millie) Story (?P<number>\d+): (?P<title>.+?)\s*$",
+        re.MULTILINE,
+    )
+    matches = list(story_pattern.finditer(text))
+
+    for index, match in enumerate(matches):
+        body_start = match.end()
+        body_end = matches[index + 1].start() if index + 1 < len(matches) else len(text)
+        body = text[body_start:body_end]
+        lesson = markdown_section(body, "Lesson")
+        premise = markdown_section(body, "Premise")
+        starting_scene = markdown_section(body, "Starting Scene")
+        choices_section = markdown_section(body, "Branching Choices")
+        choice_matches = list(
+            re.finditer(r"^#### Choice [A-Z]: (?P<label>.+?)\s*$", choices_section, re.MULTILINE)
+        )
+        choices = []
+        for choice_index, choice_match in enumerate(choice_matches):
+            choice_start = choice_match.end()
+            choice_end = (
+                choice_matches[choice_index + 1].start()
+                if choice_index + 1 < len(choice_matches)
+                else len(choices_section)
+            )
+            choices.append(
+                {
+                    "label": choice_match.group("label").strip(),
+                    "body": choices_section[choice_start:choice_end].strip(),
+                }
+            )
+
+        if starting_scene and choices:
+            character_id = BRIEF_CHARACTER_IDS[match.group("character")]
+            story = make_brief_story(
+                match.group("title").strip(),
+                lesson,
+                premise,
+                starting_scene,
+                choices,
+            )
+            story["id"] = f"brief_{match.group('character').lower()}_{match.group('number')}"
+            stories_by_character[character_id].append(story)
+
+    return stories_by_character
+
+
 STORY_OPTIONS = {
     character_id: [
         {
@@ -1039,6 +1232,18 @@ STORY_OPTIONS = {
     ]
     for character_id in STORIES
 }
+
+for character_id, brief_stories in parse_brief_stories().items():
+    STORY_OPTIONS[character_id].extend(
+        {
+            "id": story["id"],
+            "title": story["title"],
+            "description": story["description"],
+            "button": f"Play {story['title']}",
+            "scenes": story["scenes"],
+        }
+        for story in brief_stories
+    )
 
 
 CHARACTERS = {
