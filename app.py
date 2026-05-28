@@ -4,7 +4,7 @@ from pathlib import Path
 
 
 APP_TITLE = "Fun Family Adventures"
-APP_VERSION = "v0.2.0"
+APP_VERSION = "v1.0.0"
 RELEASE_NOTES = [
     "Added story selection after choosing a hero.",
     "Added a Family Map Quest that can star any hero.",
