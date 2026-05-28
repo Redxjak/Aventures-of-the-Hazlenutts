@@ -4,6 +4,10 @@ A kid-friendly, mostly text-based Python adventure game starring Melody the cat,
 
 Current version: v1.0.0.
 
+## Community
+
+Join the Discord server for project updates and feedback: [Redxjak Discord](https://discord.gg/9C4npSfNQd)
+
 ## Latest Updates
 
 - Added story selection after choosing a hero.
